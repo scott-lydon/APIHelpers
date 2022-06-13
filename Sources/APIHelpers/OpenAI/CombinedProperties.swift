@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import Callable
 
 struct CombinedProperties {
 
@@ -19,6 +18,12 @@ struct CombinedProperties {
             method: method,
             httpBody: httpBody
         )
+    }
+}
+
+extension String {
+    var url: URL? {
+        URL(string: self)
     }
 }
 
