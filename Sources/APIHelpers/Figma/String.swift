@@ -8,7 +8,7 @@
 import Foundation
 
 
-extension String {
+public extension String {
 
     /// Gets the url string for attempting to retrieve your Figma board as JSON.
     /// - Parameter board: your board's id

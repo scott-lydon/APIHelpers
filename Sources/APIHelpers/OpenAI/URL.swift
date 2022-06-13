@@ -7,7 +7,7 @@
 
 import Foundation
 
-extension URL {
+public extension URL {
 
     /// Problem, could accidentally operate on a non-open ai url
     func openAIrequest(
@@ -24,7 +24,7 @@ extension URL {
     }
 }
 
-extension Dictionary where Key == String, Value == String {
+public extension Dictionary where Key == String, Value == String {
 
     static func header(_ apiKey: String) -> Self {
         [
@@ -34,7 +34,7 @@ extension Dictionary where Key == String, Value == String {
     }
 }
 
-extension String {
+public extension String {
     static var openAIapiKey: String = .noAPIKeyProvided
     static let noAPIKeyProvided: String = "no api key provided"
 }

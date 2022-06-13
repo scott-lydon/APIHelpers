@@ -9,7 +9,7 @@ import Foundation
 
 
 
-extension Dictionary where Key == String, Value == Any {
+public extension Dictionary where Key == String, Value == Any {
 
     /**
      Helps produce a dictionary for the http body
