@@ -15,7 +15,10 @@ public extension URL {
         httpBody: [String: Any],
         headers: [String: String] = .header(.openAIapiKey)
     ) -> URLRequest {
-        assert(headers["Authorization"]?.contains(String.noAPIKeyProvided) == false)
+        assert(
+            headers["Authorization"]?.contains(String.noAPIKeyProvided) == false,
+            "You need to assign the api key like so: `String.openAIapiKey = yourKey`"
+        )
         var request = URLRequest(url: self)
         request.allHTTPHeaderFields = headers
         request.httpMethod = method.rawValue
