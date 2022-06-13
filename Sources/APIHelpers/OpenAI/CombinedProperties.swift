@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct CombinedProperties {
+public struct CombinedProperties {
 
     let urlString: String
     let method: HTTPMethod
@@ -27,7 +27,7 @@ extension String {
     }
 }
 
-extension URLRequest {
+public extension URLRequest {
 
     init?(combinedProperties: CombinedProperties) {
         if let request = combinedProperties.request {
@@ -38,7 +38,7 @@ extension URLRequest {
     }
 }
 
-extension CombinedProperties {
+public extension CombinedProperties {
 
     /// Translates plain language into a sql query.
     /// https://beta.openai.com/examples/default-sql-translate
