@@ -40,6 +40,24 @@ public extension URLRequest {
 
 public extension CombinedProperties {
 
+    /// https://beta.openai.com/docs/api-reference/edits
+    static func edit(text: String, characterAllowance: Int = 1000) -> Self {
+        .init(
+            urlString: "https://api.openai.com/v1/edits",
+            method: .post,
+            httpBody: .completionDictionary(
+                prompt: text,
+                sampling: .temperature(0),
+                numberOfTokens: ...characterAllowance,
+                stop: ["#", ";"],
+                user: nil,
+                presencePenalty: 0,
+                frequencyPenalty: 0,
+                bestOf: nil
+            )
+        )
+    }
+
     /// Translates plain language into a sql query.
     /// https://beta.openai.com/examples/default-sql-translate
     static func create(
