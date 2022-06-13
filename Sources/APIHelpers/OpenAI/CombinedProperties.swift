@@ -13,6 +13,16 @@ public struct CombinedProperties {
     public let method: HTTPMethod
     public let httpBody: [String: Any]
 
+    public init(
+        urlString: String,
+        method: HTTPMethod,
+        httpBody: [String: Any]
+    ) {
+        self.urlString = urlString
+        self.method = method
+        self.httpBody = httpBody
+    }
+
     public var request: URLRequest? {
         urlString.url?.openAIrequest(
             method: method,
@@ -41,20 +51,21 @@ public extension URLRequest {
 public extension CombinedProperties {
 
     /// https://beta.openai.com/docs/api-reference/edits
-    static func edit(text: String, characterAllowance: Int = 1000) -> Self {
+    static func edit(
+        text: String,
+        editCount: Int,
+        howToEdit: String = "Fix the spelling mistakes",
+        characterAllowance: Int = 1000
+    ) -> Self {
         .init(
             urlString: "https://api.openai.com/v1/edits",
             method: .post,
-            httpBody: .completionDictionary(
-                prompt: text,
-                sampling: .temperature(0),
-                numberOfTokens: ...characterAllowance,
-                stop: ["#", ";"],
-                user: nil,
-                presencePenalty: 0,
-                frequencyPenalty: 0,
-                bestOf: nil
-            )
+            httpBody: [
+                "model": "text-davinci-edit-001",
+                "input": text,
+                "instruction": howToEdit,
+                "n": editCount
+            ]
         )
     }
 
