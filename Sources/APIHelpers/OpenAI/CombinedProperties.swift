@@ -9,11 +9,11 @@ import Foundation
 
 public struct CombinedProperties {
 
-    let urlString: String
-    let method: HTTPMethod
-    let httpBody: [String: Any]
+    public let urlString: String
+    public let method: HTTPMethod
+    public let httpBody: [String: Any]
 
-    var request: URLRequest? {
+    public var request: URLRequest? {
         urlString.url?.openAIrequest(
             method: method,
             httpBody: httpBody
