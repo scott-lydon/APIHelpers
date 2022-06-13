@@ -11,6 +11,10 @@ import Foundation
 /// Interesting website: https://openai.com/blog/introducing-text-and-code-embeddings/
 enum OpenEngine: URLString {
 
+    var string: String {
+        rawValue.string
+    }
+
     /// Ada is usually the fastest model and can perform tasks like parsing text, address correction and certain kinds of classification tasks that don’t require too much nuance. Ada’s performance can often be improved by providing more context. Good at: Parsing text, simple classification, address correction, keywords Note: Any task performed by a faster model like Ada can be performed by a more powerful model like Curie or Davinci.
     case ada
 

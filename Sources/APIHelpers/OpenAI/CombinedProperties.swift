@@ -39,6 +39,29 @@ extension URLRequest {
 }
 
 extension CombinedProperties {
+
+    /// Translates plain language into a sql query.
+    /// https://beta.openai.com/examples/default-sql-translate
+    static func create(
+        engine: OpenEngine,
+        prompt: String,
+        characterAllowance: Int = 1000
+    ) -> Self {
+        .init(
+            urlString: "https://api.openai.com/v1/engines/\(engine.string)/completions",
+            method: .post,
+            httpBody: .completionDictionary(
+                prompt: prompt,
+                sampling: .temperature(0),
+                numberOfTokens: ...characterAllowance,
+                stop: ["#", ";"],
+                user: nil,
+                presencePenalty: 0,
+                frequencyPenalty: 0,
+                bestOf: nil
+            )
+        )
+    }
     
     /// Translates plain language into a sql query.
     /// https://beta.openai.com/examples/default-sql-translate
