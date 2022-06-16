@@ -1,13 +1,11 @@
 //
-//  Dictionary.String.Any.swift
+//  OpenAI.Dictionary.String.Any.swift
 //  AnotherExperimentWithOpenAI
 //
 //  Created by Scott Lydon on 5/9/22.
 //
 
 import Foundation
-
-
 
 public extension Dictionary where Key == String, Value == Any {
 
@@ -59,9 +57,5 @@ public extension Dictionary where Key == String, Value == Any {
             break
         }
         return parameters
-    }
-
-    var jsonData: Data? {
-        try? JSONSerialization.data(withJSONObject: self)
     }
 }

@@ -26,18 +26,3 @@ public extension URL {
         return request
     }
 }
-
-public extension Dictionary where Key == String, Value == String {
-
-    static func header(_ apiKey: String) -> Self {
-        [
-            "Authorization": "Bearer \(apiKey)",
-            "Content-Type": "application/json"
-        ]
-    }
-}
-
-public extension String {
-    static var openAIapiKey: String = .noAPIKeyProvided
-    static let noAPIKeyProvided: String = "no api key provided"
-}

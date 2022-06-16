@@ -7,11 +7,6 @@
 
 import Foundation
 
-public enum BoardID: String {
-    case singleElement = "qIW0ipGzSVr7zOfPwgrmhZ"
-    case qrCodeTarot = "Z7AdVQgzyWeMZMjyBz8gR6"
-}
-
 public extension URLRequest {
 
     /// Creates a URLRequest that can call upon the JSON of a Figma board.  Original interest in this was for the open ai endpoint so that this can be provided to train it to automatically create reusable programmatic views.  Perhaps I can open up a new board with the view that I want to have copied over...Then I can get just the JSON that is relevant.

@@ -23,32 +23,25 @@ public struct CombinedProperties {
         self.httpBody = httpBody
     }
 
-    public var request: URLRequest? {
+    public func request(apiKey: String = .openAIapiKey) -> URLRequest? {
         urlString.url?.openAIrequest(
             method: method,
-            httpBody: httpBody
+            httpBody: httpBody,
+            headers: .header(apiKey)
         )
     }
-}
 
-extension String {
-    var url: URL? {
-        URL(string: self)
+    // MARK: - Examples
+
+    static func tarotCardConversionRequest(
+        text: String = "Tacos are great.  I can't tell you how much I love tacos."
+    ) ->  Self {
+        CombinedProperties.edit(
+            text: text,
+            editCount: 3,
+            howToEdit: "Rewrite with an encouraging, wise tone.  Must include the original subjects and objects."
+        )
     }
-}
-
-public extension URLRequest {
-
-    init?(combinedProperties: CombinedProperties) {
-        if let request = combinedProperties.request {
-            self = request
-        } else {
-            return nil
-        }
-    }
-}
-
-public extension CombinedProperties {
 
     /// https://beta.openai.com/docs/api-reference/edits
     static func edit(
