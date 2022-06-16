@@ -7,7 +7,6 @@
 
 import Foundation
 
-
 /// Interesting website: https://openai.com/blog/introducing-text-and-code-embeddings/
 public enum OpenEngine: URLString {
 
@@ -126,14 +125,4 @@ public enum OpenEngine: URLString {
     case text_similarity_curie_001
 
     case text_similarity_davinci_001
-}
-
-public struct URLString: Equatable {
-    var string: String
-}
-
-extension URLString: ExpressibleByStringLiteral {
-    public init(stringLiteral value: StringLiteralType) {
-        string = value.replacingOccurrences(of: "_", with: "-")
-    }
 }
