@@ -23,6 +23,7 @@ public struct CombinedProperties {
         self.httpBody = httpBody
     }
 
+    /// Recommend: `OpenAIEditResponse` struct. 
     public func request(apiKey: String = .openAIapiKey) -> URLRequest? {
         urlString.url?.openAIrequest(
             method: method,
@@ -33,7 +34,7 @@ public struct CombinedProperties {
 
     // MARK: - Examples
 
-    static func tarotCardConversionRequest(
+    public static func tarotCardConversionRequest(
         text: String = "Tacos are great.  I can't tell you how much I love tacos."
     ) ->  Self {
         CombinedProperties.edit(
@@ -44,7 +45,7 @@ public struct CombinedProperties {
     }
 
     /// https://beta.openai.com/docs/api-reference/edits
-    static func edit(
+    public static func edit(
         text: String,
         editCount: Int,
         howToEdit: String = "Fix the spelling mistakes",
@@ -64,7 +65,7 @@ public struct CombinedProperties {
 
     /// Translates plain language into a sql query.
     /// https://beta.openai.com/examples/default-sql-translate
-    static func create(
+    public static func create(
         engine: OpenEngine,
         prompt: String,
         characterAllowance: Int = 1000
@@ -87,7 +88,7 @@ public struct CombinedProperties {
     
     /// Translates plain language into a sql query.
     /// https://beta.openai.com/examples/default-sql-translate
-    static var vapor: Self {
+    public static var vapor: Self {
         .init(
             urlString: "https://api.openai.com/v1/engines/code-davinci-002/completions",
             method: .post,
@@ -117,7 +118,7 @@ public struct CombinedProperties {
 
     /// Notice that when we add a sentence which requests full unit test coverage, the actual code is no longer included...Only the final sentence is followed.
     /// https://beta.openai.com/examples/default-sql-translate
-    static var vaporOddPhenomena: Self {
+    public static var vaporOddPhenomena: Self {
         .init(
             urlString: "https://api.openai.com/v1/engines/code-davinci-002/completions",
             method: .post,
@@ -147,7 +148,7 @@ public struct CombinedProperties {
 
     /// Translates plain language into a sql query.
     /// https://beta.openai.com/examples/default-sql-translate
-    static var sqlTranslate: Self {
+    public static var sqlTranslate: Self {
         .init(
             urlString: "https://api.openai.com/v1/engines/code-davinci-002/completions",
             method: .post,
@@ -176,7 +177,7 @@ public struct CombinedProperties {
     }
 
     /// Prints out something to do with Grapheme. or something.
-    static var myOwnTest: Self {
+    public static var myOwnTest: Self {
         .init(
             urlString: "https://api.openai.com/v1/engines/\(OpenEngine.davinci.rawValue.string)/completions",
             method: .post,
